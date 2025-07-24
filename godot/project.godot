@@ -26,11 +26,3 @@ window/stretch/aspect="keep"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-
-[input]
-
-haptic_feedback=true
-
-[autoload]
-
-SaveGame="*res://scripts/save_game_autoload.gd"

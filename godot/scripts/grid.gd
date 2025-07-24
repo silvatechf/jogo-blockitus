@@ -13,13 +13,19 @@ func _ready():
 func _draw():
     for x in range(GRID_WIDTH):
         for y in range(GRID_HEIGHT):
-            draw_rect(Rect2(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE), Color.BLACK, false)
+            var color = Color.BLACK
+            if get_cell(x, y) != 0:
+                color = Color.GREEN
+            draw_rect(Rect2(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE), color, false)
 
 func set_cell(x, y, value):
-    grid[y * GRID_WIDTH + x] = value
+    if x >= 0 and x < GRID_WIDTH and y >= 0 and y < GRID_HEIGHT:
+        grid[y * GRID_WIDTH + x] = value
 
 func get_cell(x, y):
-    return grid[y * GRID_WIDTH + x]
+    if x >= 0 and x < GRID_WIDTH and y >= 0 and y < GRID_HEIGHT:
+        return grid[y * GRID_WIDTH + x]
+    return -1 # Return -1 for out-of-bounds cells
 
 func clear_lines():
     var lines_cleared = 0
