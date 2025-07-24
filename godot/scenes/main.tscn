@@ -16,3 +16,11 @@ offset_right = 420.0
 offset_bottom = 1150.0
 theme = ExtResource("3_fylej")
 text = "Restart"
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 250.0
+offset_bottom = 100.0
+theme = ExtResource("3_fylej")
+text = "Score: 0"

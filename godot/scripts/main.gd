@@ -43,6 +43,38 @@ func _process(delta):
 
     current_block.position += gravity_direction * gravity * delta
 
+    if is_block_landed():
+        place_block()
+        var lines_cleared = grid.clear_lines()
+        if lines_cleared > 0:
+            score += lines_cleared * 100
+            $ScoreLabel.text = "Score: " + str(score)
+        if is_game_over():
+            end_game()
+        else:
+            spawn_block()
+
+func is_game_over():
+    for x in range(grid.GRID_WIDTH):
+        if grid.get_cell(x, 0) != 0:
+            return true
+    return false
+
+func is_block_landed():
+    for cell in current_block.shape:
+        var x = current_block.position.x + cell.x
+        var y = current_block.position.y + cell.y
+        if y >= grid.GRID_HEIGHT - 1 or (y >= 0 and grid.get_cell(x, y + 1) != 0):
+            return true
+    return false
+
+func place_block():
+    for cell in current_block.shape:
+        var x = current_block.position.x + cell.x
+        var y = current_block.position.y + cell.y
+        grid.set_cell(x, y, 1)
+    current_block.queue_free()
+
 func spawn_block():
     var block_scene = preload("res://scenes/block.tscn")
     current_block = block_scene.instantiate()
@@ -70,4 +102,4 @@ func trigger_gravity_event():
         gravity_direction = Vector2(0, -1) # Invert gravity
 
 func end_game():
-    get_tree().reload_current_scene()
+    get_tree().change_scene_to_file("res://scenes/game_over.tscn")
