@@ -12,6 +12,7 @@ var score = 0
 var save_game
 
 func _ready():
+    print("Main scene ready.")
     save_game = get_node("/root/SaveGame")
     save_game.load_game()
     grid = get_node("Grid")
@@ -62,20 +63,21 @@ func is_game_over():
 
 func is_block_landed():
     for cell in current_block.shape:
-        var x = current_block.position.x + cell.x
-        var y = current_block.position.y + cell.y
+        var x = floor(current_block.position.x / 32) + cell.x
+        var y = floor(current_block.position.y / 32) + cell.y
         if y >= grid.GRID_HEIGHT - 1 or (y >= 0 and grid.get_cell(x, y + 1) != 0):
             return true
     return false
 
 func place_block():
     for cell in current_block.shape:
-        var x = current_block.position.x + cell.x
-        var y = current_block.position.y + cell.y
+        var x = floor(current_block.position.x / 32) + cell.x
+        var y = floor(current_block.position.y / 32) + cell.y
         grid.set_cell(x, y, 1)
     current_block.queue_free()
 
 func spawn_block():
+    print("Spawning new block.")
     var block_scene = preload("res://scenes/block.tscn")
     current_block = block_scene.instantiate()
 
@@ -102,4 +104,5 @@ func trigger_gravity_event():
         gravity_direction = Vector2(0, -1) # Invert gravity
 
 func end_game():
+    print("Game over.")
     get_tree().change_scene_to_file("res://scenes/game_over.tscn")
