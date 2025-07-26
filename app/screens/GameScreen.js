@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Stage from '../components/Stage';
-import { createStage, checkCollision } from '../game-engine/board';
 import { randomTetromino, TETROMINOS } from '../game-engine';
-import { STAGE_WIDTH } from '../game-engine/board';
+import { checkCollision, createStage, STAGE_WIDTH } from '../game-engine/board';
 
 const GameScreen = () => {
   const [stage, setStage] = useState(createStage());
