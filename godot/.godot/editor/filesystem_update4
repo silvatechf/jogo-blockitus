@@ -2,3 +2,6 @@ res://scenes/block.tscn
 res://scenes/grid.tscn
 res://scenes/main.tscn
 res://scenes/main_menu.tscn
+res://scenes/game_over.tscn
+res://scripts/main.gd
+res://scripts/block.gd

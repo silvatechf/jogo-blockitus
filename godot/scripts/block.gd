@@ -8,20 +8,20 @@ var shape = [Vector2(0, 0), Vector2(1, 0), Vector2(0, 1), Vector2(1, 1)] # Defau
 var position = Vector2(0, 0)
 
 func _draw():
-    for cell in shape:
-        draw_rect(Rect2(cell.x * 32, cell.y * 32, 32, 32), color)
+	for cell in shape:
+		draw_rect(Rect2(cell.x * 32, cell.y * 32, 32, 32), color)
 
 func move_down():
-    position.y += 1
+	position.y += 1
 
 func move_left():
-    position.x -= 1
+	position.x -= 1
 
 func move_right():
-    position.x += 1
+	position.x += 1
 
 func rotate():
-    for i in range(shape.size()):
-        var x = shape[i].y
-        var y = -shape[i].x
-        shape[i] = Vector2(x, y)
+	for i in range(shape.size()):
+		var x = shape[i].y
+		var y = -shape[i].x
+		shape[i] = Vector2(x, y)

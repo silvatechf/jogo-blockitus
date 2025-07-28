@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3v3v3v3v3v3"]
+[gd_scene load_steps=2 format=3 uid="uid://c3v3v3v3v3v3"]
 
-[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_fylej"]
-[ext_resource type="Theme" uid="uid://d3v3v3v3v3v3" path="res://assets/neon.tres" id="2_fylej"]
+[ext_resource type="Script" uid="uid://cmbk2o4yjuipl" path="res://scripts/game_over.gd" id="1_fylej"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -25,7 +24,6 @@ offset_right = 100.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_fylej")
 
 [node name="GameOverLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
